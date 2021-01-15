@@ -16,13 +16,27 @@ function randomN(min, max) {
     return randomArray;
 }
 
-//Funzione che controlla che i 5 numeri casuali siano diversi 
-function numberCheck(userNumber,userArray) {
-    if (userArray.includes(userNumber)) {
-        return true;
-    } else {
-        return false;
-    }
+// Funzione che controlla che i 5 numeri casuali siano diversi 
+// function numberCheck(userNumber,userArray) {
+//     if (userArray.includes(userNumber)) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+//Funzione per chiedere numero all'utente
+function askN() {
+    for (let n = 0; n < 5; n++) {
+        userNumber = parseInt(prompt('Inserisci i 5 numeri mostrati'));
+        if (isNaN(userNumber)) {
+          alert('Puoi inserire solo numeri');
+        } else {
+        userArray.push(userNumber);
+        console.log('Numeri scelti da utente: ' + userNumber);
+        }
+      }
+        
 }
 
 //Genero e mostro numeri da ricordare all'utente
@@ -37,4 +51,16 @@ while (pcArray.length < pcLength) {
 }
 
 console.log('Questi sono i numeri generati dal pc: ' + pcArray);
-alert('Questi sono i numeri generati dal pc: ' + pcArray);
+alert('Questi sono i numeri generati dal Pc: ' + pcArray);
+
+//Chiedo all'utente i numeri che gli ho mostrato nell'alert tramite prompt
+setTimeout(askN, 30000);
+
+//Controllo se i numeri scelti dall'utente corrispondono ai numeri generati dal PC
+setTimeout(function() {
+    if (pcArray.includes(userNumber)) {
+        alert('Congratulazioni, hai vinto!')
+    } else {
+        alert('Uno o più numeri errati')
+    }
+}, 40000)
